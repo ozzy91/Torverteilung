@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    
+    <!-- Goal Dispersion -->
+    <dimen name="goal_dispersion_bottom_bar_height">30dp</dimen>
+    <dimen name="goal_dispersion_bottom_bar_margin_top">6dp</dimen>
+    <dimen name="goal_dispersion_divider_width">2dp</dimen>
+    
+</resources>
