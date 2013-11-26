@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -28,6 +30,7 @@ public class GoalDispersionView extends View {
 	private Paint solidPaint;
 	private Paint bluePaint;
 	private Paint grayPaint;
+	private TextPaint valuePaint;
 	
 	private float goalHeight;
 	private int highestValue;
@@ -89,6 +92,8 @@ public class GoalDispersionView extends View {
 		float firstBarLeft = section * SECTION_WIDTH + marginOutside;
 		canvas.drawRect(firstBarLeft, barsBottom - goals1_15 * goalHeight, firstBarLeft + BAR_WIDTH, barsBottom, bluePaint);
 		canvas.drawRect(firstBarLeft + BAR_WIDTH + BARS_MARGIN, barsBottom - opponent1_15 * goalHeight, firstBarLeft + 2 * BAR_WIDTH + BARS_MARGIN, barsBottom, grayPaint);
+		canvas.drawText("" + goals1_15, firstBarLeft, barsBottom - goals1_15 * goalHeight - VALUE_TEXT_MARGIN, valuePaint);
+		canvas.drawText("" + opponent1_15, firstBarLeft + BAR_WIDTH + BARS_MARGIN, barsBottom - opponent1_15 * goalHeight - VALUE_TEXT_MARGIN, valuePaint);
 		section++;
 		
 		firstBarLeft = section * SECTION_WIDTH + marginOutside;
@@ -203,6 +208,12 @@ public class GoalDispersionView extends View {
 		
 		grayPaint = new Paint();
 		grayPaint.setShader(new LinearGradient(0, 0, BAR_WIDTH, 0, Color.parseColor("#696969"), Color.parseColor("#3d3d3d"), Shader.TileMode.MIRROR));
+	
+		valuePaint = new TextPaint();
+		valuePaint.setColor(Color.WHITE);
+		valuePaint.setTypeface(Typeface.DEFAULT_BOLD);
+		valuePaint.setTextSize(VALUE_TEXT_SIZE);
+		valuePaint.setFlags(Paint.SUBPIXEL_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 	}
 	
 	public void initValues() {
