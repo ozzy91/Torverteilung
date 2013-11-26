@@ -1,5 +1,7 @@
 package com.example.torverlauf;
 
+import java.util.Map;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,6 +13,8 @@ public class GoalDispersionCard extends LinearLayout {
 	
 	private TextView txtTeamName;
 	private GoalDispersionView goalDispersionView;
+	private Map<String, Object> subnode;
+	private boolean isLayout;
 	
 	public GoalDispersionCard(Context context) {
 		super(context);
@@ -42,8 +46,25 @@ public class GoalDispersionCard extends LinearLayout {
 				int height = getHeight() - (int) teamNameBottom - 0;
 				goalDispersionView.setHeight(height);
 				goalDispersionView.setRotation(-90);
+				goalDispersionView.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+					@Override
+					public void onGlobalLayout() {
+						goalDispersionView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+						isLayout = true;
+						if (subnode != null) {
+							goalDispersionView.testCode();
+						}
+					}
+				});
 			}
 		});
 	}
-
+	
+	public void setData(Map<String, Object> subnode) {
+		if (isLayout) {
+			goalDispersionView.testCode();
+		} else {
+			this.subnode = subnode;
+		}
+	}
 }

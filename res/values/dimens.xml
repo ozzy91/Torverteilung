@@ -6,7 +6,9 @@
 
     
     <!-- Goal Dispersion -->
-    <dimen name="goal_dispersion_bottom_bar_height">30dp</dimen>
+    <dimen name="goal_dispersion_bottom_bar_height">26dp</dimen>
     <dimen name="goal_dispersion_bottom_bar_margin_top">6dp</dimen>
+    <dimen name="goal_dispersion_bar_width">18dp</dimen>
+    <dimen name="goal_dispersion_bars_margin">4dp</dimen>
     
 </resources>
