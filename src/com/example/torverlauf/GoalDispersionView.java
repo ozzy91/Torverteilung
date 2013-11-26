@@ -20,6 +20,8 @@ public class GoalDispersionView extends View {
 	private static int BOTTOM_BAR_MARGIN_TOP;
 	private static int BAR_WIDTH;
 	private static int BARS_MARGIN;
+	private static int VALUE_TEXT_SIZE;
+	private static int VALUE_TEXT_MARGIN;
 	private static float SECTION_WIDTH;
 	
 	private Paint testPaint;
@@ -185,13 +187,7 @@ public class GoalDispersionView extends View {
             if (opponent90_plus > highestValue)
                     highestValue = opponent90_plus;
 			
-			getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-				@Override
-				public void onGlobalLayout() {
-					getViewTreeObserver().removeGlobalOnLayoutListener(this);
-					goalHeight = (float) (getHeight() - BOTTOM_BAR_HEIGHT - BOTTOM_BAR_MARGIN_TOP) / highestValue;
-				}
-			});
+            goalHeight = (float) (getHeight() - BOTTOM_BAR_HEIGHT - BOTTOM_BAR_MARGIN_TOP - VALUE_TEXT_MARGIN - VALUE_TEXT_SIZE) / highestValue;
 		}
 	}
 
@@ -215,6 +211,8 @@ public class GoalDispersionView extends View {
 		BOTTOM_BAR_MARGIN_TOP = (int) res.getDimension(R.dimen.goal_dispersion_bottom_bar_margin_top);
 		BAR_WIDTH = (int) res.getDimension(R.dimen.goal_dispersion_bar_width);
 		BARS_MARGIN = (int) res.getDimension(R.dimen.goal_dispersion_bars_margin);
+		VALUE_TEXT_SIZE = (int) res.getDimension(R.dimen.goal_dispersion_value_text_size);
+		VALUE_TEXT_MARGIN = (int) res.getDimension(R.dimen.goal_dispersion_value_text_margin);
 	}
 	
 	@Override
@@ -267,7 +265,7 @@ public class GoalDispersionView extends View {
 		goals90_plus = 1;
 		opponent90_plus = 0;
 		
-		goalHeight = (float) (getHeight() - BOTTOM_BAR_HEIGHT - BOTTOM_BAR_MARGIN_TOP) / 8;
+		goalHeight = (float) (getHeight() - BOTTOM_BAR_HEIGHT - BOTTOM_BAR_MARGIN_TOP - VALUE_TEXT_MARGIN - VALUE_TEXT_SIZE) / 8;
 		invalidate();
 	}
 }
