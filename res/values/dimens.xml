@@ -8,6 +8,8 @@
     <!-- Goal Dispersion -->
     <dimen name="goal_dispersion_bottom_bar_height">26dp</dimen>
     <dimen name="goal_dispersion_bottom_bar_margin_top">6dp</dimen>
+    <dimen name="goal_dispersion_minute_text_margin_bottom">8dp</dimen>
+    <dimen name="goal_dispersion_minute_text_size">13dp</dimen>
     <dimen name="goal_dispersion_bar_width">20dp</dimen>
     <dimen name="goal_dispersion_bars_margin">4dp</dimen>
     <dimen name="goal_dispersion_value_text_size">14dp</dimen>
